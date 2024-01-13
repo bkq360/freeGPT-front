@@ -1,29 +1,41 @@
 <script setup>
-defineProps({
-    title: String,
-    likes: Number
-  })
-// let width = (document.documentElement.clientWidth-700)+"px";
-// let height = (document.documentElement.clientHeight-100)+"px";
 </script>
-
 <template>
-  test
-  <div class="main" :style="{width:width,height:height}" > 
-    test
+  <div class="main" > 
+    <div class="contain">
+      <div class="tab">
+        
+      </div>
+      <div class="content">
+        
+      </div>
+    </div>
   </div>
 </template>
 <style >
-body,*{
+body{
   margin:0;
   padding:0;
+  height:100vh;
+  overflow: hidden; 
 }
 .main{
-  width:100%; 
-   height:100%;
-  background-color:red;
-  /* padding:0px; */
-  /* margin:50px; */
+  width:98%;
+  box-shadow:2px 3px 2px rgba(0, 0, 0, 0.3);
+  margin:auto;
+  margin-top:15px;
+  min-height:calc(100vh - 30px);
+  border:1px solid rgb(196, 193, 193)
 }
-
+.contain{
+  display: flex;
+}
+.tab{
+  height:calc(100vh - 30px);
+  width:14%;
+}
+.content{
+  height:calc(100vh - 30px);
+  width:86%;
+}
 </style>
