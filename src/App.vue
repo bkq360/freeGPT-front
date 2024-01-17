@@ -1,15 +1,10 @@
 <script setup>
 import { onMounted } from "vue";
-import Button from "./components/button.vue"
-onMounted(()=>{
-  // function test(){
-  //   alert(111)
-  // }
-})
+import Button from "./components/Button.vue"
+import AddButton from "./components/AddButton.vue"
 function test(){
   let element = document.getElementById("meun-right");
   let expandButton = document.getElementsByClassName("expand")[0];
-  let width = window.getComputedStyle(element).width;
   if(element.style.width == "0px"){
     element.style.width = "14%";
     expandButton.style.transform = "translateX(50%) translateY(-50%) rotateY(180deg)";
@@ -17,10 +12,20 @@ function test(){
     element.style.width = "0px";
     expandButton.style.transform = "translateX(50%) translateY(-50%)";
   }
-
-  // element.button.style.transform="rotateY(180deg)";
-  // element.style.width = width != "0px" ? "0px" : "14%";
   
+ 
+  function showScrollbar() {
+    alert("in")
+      document.getElementById("leftItemMain").style.overflow = 'auto';
+  }
+  function hideScrollbar() {
+    document.getElementById("leftItemMain").style.overflow = 'hidden';
+  }
+  function testgo(){
+    alert(1111)
+  }
+
+
 }
 </script>
 <template>
@@ -28,11 +33,29 @@ function test(){
     <div class="contain">
       <div class="main-content"></div>
       <div class="main-right" id="meun-right" >
-        test
+        <div class="item-header">
+          <AddButton />
+        </div>
+        <div class="item-main"    @mouseenter="showScrollbar"
+      @mouseleave="hideScrollbar">
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+          <SessionItem />
+        </div>
+        <div class="item">3</div>
       </div>
       <Button @click="test" />
       <div class="main-left">
-        testa
+             testa
       </div>
     </div>
   </div>
@@ -44,10 +67,22 @@ body{
   height:100vh;
   overflow: hidden; 
 }
+.item-header{
+  text-align: center;
+  width:100%;
+  height: 100%;
+}
+.item-main{
+  text-align: center;
+  overflow: hidden;
+}
+.scroll::-webkit-scrollbar{
+display: none;
+}
 
 .main{
   width:98%;
-  box-shadow:2px 3px 2px rgba(0, 0, 0, 0.3),-1px -1px 1px rgba(0,0,0,0.05);
+  box-shadow:2px 3px 10px rgba(91, 91, 91, 0.3),-1px -1px 10px rgba(0,0,0,0);
   border-radius: 6px;
   margin:auto;
   margin-top:15px;
@@ -63,18 +98,16 @@ body{
   align-items:center
 }
 .main-right{
+  display: grid;
+  grid-template-rows: 10% 65% 25%;
   position:relative;
   height:calc(100vh - 30px);
   width:14%;
-  /* left:0; */
-  border-right:1px solid rgb(196, 193, 193,0.5);
-  /* width:0px; */
-  
+  border-right:1px solid rgb(196, 193, 193,0.4);
   transition: all ease 0.4s;
   overflow: hidden;
 }
 .main-left{
-  height:calc(100vh - 30px);
-  
+  height:calc(100vh - 30px); 
 }
 </style>
