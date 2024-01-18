@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-        <button class="add-button">新建聊天</button>
+        <button class="add-button" @click="$emit('addSessionItem')">新建聊天</button>
 </template>
 <style>
 .add-button{
