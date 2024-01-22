@@ -6,6 +6,7 @@ import SessionItem from "./components/SessionItem.vue"
 const isNoComponent = ref(true)
 const sessionItemList = ref([])
 provide("sessionList",sessionItemList)
+const isActive = ref(false)
 function spandDiv(){
   let element = document.getElementById("meun-right");
   let expandButton = document.getElementsByClassName("expand")[0];
@@ -23,7 +24,7 @@ function showScrollbar(){
 function hideScrollbar() {
      document.getElementById("leftItemMain").style.overflow = 'hidden';
 }
-function addSessionIte(){
+function addSessionItem(){
   if(isNoComponent.value){
     isNoComponent.value = false;
   }
@@ -45,7 +46,7 @@ function changeSession(test){
       <div class="main-content"></div>
       <div class="main-right" id="meun-right" >
         <div class="item-header">
-          <AddButton @add-session-item="addSessionIte"/>
+          <AddButton @add-session-item="addSessionItem"/>
         </div>
         <div class="item-main" id="leftItemMain"  @mouseenter="showScrollbar" @mouseleave="hideScrollbar">
          <div class="default" v-if="isNoComponent">
@@ -55,7 +56,7 @@ function changeSession(test){
               <span>暂无数据</span>
          </div>
          <div v-else v-for="(sessionItem,index) in sessionItemList" :key="index">
-              <SessionItem :class="{isChoose:sessionItem}" @change-session="changeSession" :index="index" />
+              <SessionItem :comment-ids="[234, 266, 273]" :isAction="isAction" :class="{isChoose:sessionItem}" @change-session="changeSession" :index="index" />
             </div>
         </div>
         <div class="item">3</div>
