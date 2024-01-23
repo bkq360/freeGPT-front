@@ -3,10 +3,32 @@ import { ref,provide } from "vue";
 import SpandButton from "./components/Button.vue"
 import AddButton from "./components/AddButton.vue"
 import SessionItem from "./components/SessionItem.vue"
+// export default defineComponent({
+//   // 需要启用子组件作为模板
+//   components: {
+//     Child,
+//   },
+
+//   // 定义一些数据并 `return` 给 `<template />` 用
+//   setup() {
+//     const userInfo: Member = {
+//       id: 1,
+//       name: 'Petter',
+//     }
+
+//     // 不要忘记 `return` ，否则 `<template />` 拿不到数据
+//     return {
+//       userInfo,
+//     }
+//   },
+// })
+
 const isNoComponent = ref(true)
 const sessionItemList = ref([])
+const chooseIndex = ref(0)
 provide("sessionList",sessionItemList)
-const isActive = ref(false)
+provide("chooseIndex",chooseIndex)
+
 function spandDiv(){
   let element = document.getElementById("meun-right");
   let expandButton = document.getElementsByClassName("expand")[0];
@@ -28,16 +50,20 @@ function addSessionItem(){
   if(isNoComponent.value){
     isNoComponent.value = false;
   }
-  const val = sessionItemList.value
-  if(val == 0){ 
-    sessionItemList.value.push(true);
-  }else{
-    sessionItemList.value.push(false);
-  }
-  // console.log(sessionItemList.value)
+  sessionItemList.value.unshift(false);
+  changeIndex(0)
 }
-function changeSession(test){
-  console.log(test)
+
+function changeIndex(val){
+  for(let i =0;i<sessionItemList.value.length;i++){
+        if(i == val){
+          chooseIndex.value = i
+          // console.log(chooseIndex.value)
+          sessionItemList.value[i] = true    
+        }else{
+          sessionItemList.value[i] = false;
+        }
+    }   
 }
 </script>
 <template>
@@ -56,7 +82,7 @@ function changeSession(test){
               <span>暂无数据</span>
          </div>
          <div v-else v-for="(sessionItem,index) in sessionItemList" :key="index">
-              <SessionItem :comment-ids="[234, 266, 273]" :isAction="isAction" :class="{isChoose:sessionItem}" @change-session="changeSession" :index="index" />
+              <SessionItem   :class="{isChoose:sessionItem}"  @changeSessionItemIndex="changeIndex" :index="index"  />
             </div>
         </div>
         <div class="item">3</div>
