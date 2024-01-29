@@ -3,6 +3,8 @@ import { ref,provide } from "vue";
 import SpandButton from "./components/Button.vue"
 import AddButton from "./components/AddButton.vue"
 import SessionItem from "./components/SessionItem.vue"
+import UserInfo from "./components/UserInfo.vue"
+import SessionMain from "./components/SessionMain.vue"
 // export default defineComponent({
 //   // 需要启用子组件作为模板
 //   components: {
@@ -26,9 +28,9 @@ import SessionItem from "./components/SessionItem.vue"
 const isNoComponent = ref(true)
 const sessionItemList = ref([])
 const chooseIndex = ref(0)
-provide("sessionList",sessionItemList)
+const isEdit = ref(true);
 provide("chooseIndex",chooseIndex)
-
+provide("isEdit",isEdit)
 function spandDiv(){
   let element = document.getElementById("meun-right");
   let expandButton = document.getElementsByClassName("expand")[0];
@@ -63,7 +65,13 @@ function changeIndex(val){
         }else{
           sessionItemList.value[i] = false;
         }
-    }   
+    }  
+    // changeEditStatus()
+    // isEdit.value= false; 
+}
+function changeEditStatus(bool){
+  // alert("in")
+  isEdit.value = bool;
 }
 </script>
 <template>
@@ -82,13 +90,16 @@ function changeIndex(val){
               <span>暂无数据</span>
          </div>
          <div v-else v-for="(sessionItem,index) in sessionItemList" :key="index">
-              <SessionItem   :class="{isChoose:sessionItem}"  @changeSessionItemIndex="changeIndex" :index="index"  />
+              <SessionItem   :class="{isChoose:sessionItem}" @changeEditStatus="changeEditStatus" @changeSessionItemIndex="changeIndex" :index="index"  />
             </div>
         </div>
-        <div class="item">3</div>
+        <div class="item-bottom">
+          <UserInfo/>
+        </div>
       </div>
       <SpandButton @click="spandDiv"/>
       <div class="main-left">
+        <SessionMain />
       </div>
     </div>
   </div>
@@ -112,6 +123,13 @@ html {
 .item-main{
   text-align: center;
   overflow: hidden;
+  border-bottom: 1px solid rgb(196, 193, 193,0.5);
+}
+.item-bottom{
+  /* text-align: center; */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+
 }
 .default{
   display: grid;
@@ -143,7 +161,7 @@ html {
 }
 .main-right{
   display: grid;
-  grid-template-rows: 10% 65% 25%;
+  grid-template-rows: 10% 80% 10%;
   position:relative;
   height:calc(100vh - 30px);
   width:14%;

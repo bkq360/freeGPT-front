@@ -4,7 +4,6 @@
       <ChildComponent :isActivated.sync="!isActivated" />
     </div>
   </template>
-  
   <script>
   import ChildComponent from './ChildComponent.vue';
   
