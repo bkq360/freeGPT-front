@@ -1,21 +1,20 @@
 <script>
 
-
 </script>
 <template>
 <div class="left-main">
-111
-    <div class="left main-top"></div>
-    <div class="left main-footer">12</div>
+ <span>test</span>
 </div>
 </template>
 <style>
 .left-main{
     width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    /* min-height: 100vh; */
+    /* margin:0; */
 }
-.main{
 
-}
+
 
 </style>

@@ -5,25 +5,7 @@ import AddButton from "./components/AddButton.vue"
 import SessionItem from "./components/SessionItem.vue"
 import UserInfo from "./components/UserInfo.vue"
 import SessionMain from "./components/SessionMain.vue"
-// export default defineComponent({
-//   // 需要启用子组件作为模板
-//   components: {
-//     Child,
-//   },
-
-//   // 定义一些数据并 `return` 给 `<template />` 用
-//   setup() {
-//     const userInfo: Member = {
-//       id: 1,
-//       name: 'Petter',
-//     }
-
-//     // 不要忘记 `return` ，否则 `<template />` 拿不到数据
-//     return {
-//       userInfo,
-//     }
-//   },
-// })
+import SessionFooter from "./components/SessionFooter.vue"
 
 const isNoComponent = ref(true)
 const sessionItemList = ref([])
@@ -66,11 +48,9 @@ function changeIndex(val){
           sessionItemList.value[i] = false;
         }
     }  
-    // changeEditStatus()
-    // isEdit.value= false; 
+   
 }
 function changeEditStatus(bool){
-  // alert("in")
   isEdit.value = bool;
 }
 </script>
@@ -100,6 +80,7 @@ function changeEditStatus(bool){
       <SpandButton @click="spandDiv"/>
       <div class="main-left">
         <SessionMain />
+        <SessionFooter />
       </div>
     </div>
   </div>
@@ -170,6 +151,9 @@ html {
   overflow: hidden;
 }
 .main-left{
+  width:86%;
+  display: grid;
+  grid-template-rows: 90% 10%;
   height:calc(100vh - 30px); 
 }
 </style>
