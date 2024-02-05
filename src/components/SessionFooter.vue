@@ -1,10 +1,11 @@
 <script setup>
-function autoResize(element) {
-    // const element = element.getElementById("inputsay");
-    console.log("in")
-    element.style.height = 'auto';
-    console.log(element.scrollHeight)
-    element.style.height = (element.scrollHeight) + 'px';
+function autoResize() {
+    const elementa = document.getElementById("inputsay");
+    // console.log("in")
+    // console.log(elementa)
+    elementa.style.height = 'auto';
+    console.log(elementa.scrollHeight)
+    elementa.style.height = (elementa.scrollHeight) + 'px';
   }
 </script>
 <template>
@@ -27,7 +28,7 @@ function autoResize(element) {
         </select>
     </div>
     <div class="foote-inner inputText">
-        <textarea class="input-say" id="inputsay" @oninput="autoResize(this)"  placeholder="来说点什么吧...(Shift + Enter = 换行，&quot;/&quot; 触发提示词）" ></textarea>
+        <textarea class="input-say" id="inputsay" @input="autoResize()"  placeholder="来说点什么吧...(Shift + Enter = 换行，&quot;/&quot; 触发提示词）" ></textarea>
      </div>
     <div class="foote-inner">
         <button class="send-button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class=" iconify iconify--ri" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634L21.044 2.32c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8l-8 6z"></path></svg></button>
@@ -54,14 +55,14 @@ function autoResize(element) {
     margin-left: 15px;
 }
 .inputText{
-    line-height: 35px;
+    /* line-height: 35px; */
     
 }
 .input-say{
     width: 930px;
     height: auto;
-    /* min-height: 10px;
-    max-height: 50px; */
+    min-height: 35px;
+    max-height: 200px;
     border: 1px solid rgba(192, 189, 189, 0.5);
     border-radius: 5px;
     /* resize: none; */
@@ -78,7 +79,7 @@ function autoResize(element) {
 }
 .select-inner{
     height: 25px;
-    width: 120px;
+    max-width: 120px;
     border-color: rgba(106, 104, 104, 0.4);
     border-radius: 3px;
 }
@@ -90,5 +91,6 @@ function autoResize(element) {
 .delete-icon:hover,.history-icon:hover{
     background-color: rgba(224, 220, 220, 0.4);
     cursor: pointer;
+    
 }
 </style>
