@@ -1,12 +1,13 @@
 <script setup>
 function autoResize() {
     const elementa = document.getElementById("inputsay");
-    // console.log("in")
-    // console.log(elementa)
     elementa.style.height = 'auto';
-    console.log(elementa.scrollHeight)
     elementa.style.height = (elementa.scrollHeight) + 'px';
   }
+function gogoa(){
+    // alert("test")
+    console.log("test")
+}
 </script>
 <template>
 <div class="footer">
@@ -28,7 +29,7 @@ function autoResize() {
         </select>
     </div>
     <div class="foote-inner inputText">
-        <textarea class="input-say" id="inputsay" @input="autoResize()"  placeholder="来说点什么吧...(Shift + Enter = 换行，&quot;/&quot; 触发提示词）" ></textarea>
+        <textarea class="input-say" id="inputsay" @input="autoResize()" @focus="gogoa"  placeholder="来说点什么吧...(Shift + Enter = 换行，&quot;/&quot; 触发提示词）" ></textarea>
      </div>
     <div class="foote-inner">
         <button class="send-button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class=" iconify iconify--ri" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M1.946 9.315c-.522-.174-.527-.455.01-.634L21.044 2.32c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8l-8 6z"></path></svg></button>
@@ -37,35 +38,30 @@ function autoResize() {
 </template>
 <style>
 .footer{
-    /* position: fixed; */
-    bottom: 16px;
-    height: 40px;
-    /* width: 100%; */
-    display: flex;
+    position: absolute;
+    bottom: 20px;
+    background-color: white;
+    width: 100%;
+    display: flex;  
     flex-direction: row;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
-    justify-content: flex-start;
-    padding: 20px 150px;
+    justify-content:center;
+    align-items: center;
+    z-index: 1;
 }
 .foote-inner{
-    /* height: 100%; */
-    display: block;
-    /* padding:  auto; */
+    display: inline-block;
     text-align: center;
-    /* color:rgb(108, 106, 106); */
     margin-left: 15px;
 }
-.inputText{
-    /* line-height: 35px; */
-    
-}
+
 .input-say{
     width: 930px;
     height: auto;
     min-height: 35px;
-    max-height: 200px;
+    max-height: 160px;
     border: 1px solid rgba(192, 189, 189, 0.5);
     border-radius: 5px;
-    /* resize: none; */
+    resize: none;
 }
 .input-say:hover{
     border-color: rgb(80, 162, 99,1);
@@ -76,6 +72,7 @@ function autoResize() {
 }
 .select-icon{
     line-height: 40px;
+    width: 160px;
 }
 .select-inner{
     height: 25px;
@@ -85,8 +82,8 @@ function autoResize() {
 }
 .delete-icon,.history-icon{
     width: 40px;
-    line-height: 40px;
     border-radius: 20px;
+    height: 40px;
 }
 .delete-icon:hover,.history-icon:hover{
     background-color: rgba(224, 220, 220, 0.4);
