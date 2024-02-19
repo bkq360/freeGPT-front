@@ -12,7 +12,7 @@ function gogoa(){
 <template>
 <div class="footer">
      <div class="foote-inner delete-icon" >
-       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class=" iconify iconify--ri" width="40" height="40" viewBox="-8 -8 40 40">
+       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--ri" width="40" height="40" viewBox="-8 -8 40 40">
         <path fill="currentColor" d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1zm1 2H6v12h12zm-9 3h2v6H9zm4 0h2v6h-2zM9 4v2h6V4z"></path>
        </svg>
     </div>
@@ -22,7 +22,9 @@ function gogoa(){
         </svg>
     </div>
     <div class="foote-inner select-icon">
+        <div class="modelText">
         <span>模型：</span>
+        </div>
         <select class="select-inner"  name="test">
             <option value="3.5">默认GPT3.5</option>
             <option value="4">GPT4</option>
@@ -53,9 +55,11 @@ function gogoa(){
     text-align: center;
     margin-left: 15px;
 }
-
+.inputText{
+    width: 65%;
+}
 .input-say{
-    width: 930px;
+    width: 100%;
     height: auto;
     min-height: 35px;
     max-height: 160px;
@@ -76,9 +80,14 @@ function gogoa(){
 }
 .select-inner{
     height: 25px;
+    width:70%;
+    vertical-align: center;
     max-width: 120px;
     border-color: rgba(106, 104, 104, 0.4);
     border-radius: 3px;
+}
+.modelText{
+    display: inline-block;
 }
 .delete-icon,.history-icon{
     width: 40px;

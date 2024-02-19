@@ -3,7 +3,7 @@
 </script>
 <template>
 <div class="left-main">
- <div style="background-color: red;height: 800px;overflow: hidden;"></div>
+ <div style="height: 800px;overflow: hidden;"></div>
 </div>
 </template>
 <style>
@@ -15,7 +15,4 @@
     /* min-height: 100vh; */
     /* margin:0; */
 }
-
-
-
 </style>

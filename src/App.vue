@@ -1,5 +1,5 @@
 <script setup>
-import { ref, provide } from "vue";
+import { ref, provide, reactive } from "vue";
 import SpandButton from "./components/Button.vue";
 import AddButton from "./components/AddButton.vue";
 import SessionItem from "./components/SessionItem.vue";
@@ -11,8 +11,7 @@ const isNoComponent = ref(true);
 const sessionItemList = ref([]);
 const chooseIndex = ref(0);
 const isEdit = ref(true);
-provide("chooseIndex", chooseIndex);
-provide("isEdit", isEdit);
+const ConversationList = reactive([])
 
 const spandDiv = () => {
   const element = document.getElementById("meun-right");
@@ -105,6 +104,8 @@ html {
 .item-bottom {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  position:absolute;
+  bottom: 25px;
 }
 
 .default {
