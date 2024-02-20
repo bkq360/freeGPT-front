@@ -5,7 +5,6 @@ function autoResize() {
     elementa.style.height = (elementa.scrollHeight) + 'px';
   }
 function gogoa(){
-    // alert("test")
     console.log("test")
 }
 </script>

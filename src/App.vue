@@ -12,7 +12,9 @@ const sessionItemList = ref([]);
 const chooseIndex = ref(0);
 const isEdit = ref(true);
 const ConversationList = reactive([])
-
+provide("chooseIndex", chooseIndex);
+provide("isEdit", isEdit);
+provide("conversationList",ConversationList);
 const spandDiv = () => {
   const element = document.getElementById("meun-right");
   const expandButton = document.getElementsByClassName("expand")[0];
@@ -31,9 +33,15 @@ const hideScrollbar = () => {
 const addSessionItem = () => {
   isNoComponent.value = false;
   sessionItemList.value.unshift(false);
+  // ConversationList.value.unshift({"title":"","conversation":[]})
+  insertObjectAtIndex(0,{"title":"","conversation":[]})
+  // console.log(ConversationList[0])
+  // console.log(ConversationList.value)
   changeIndex(0);
 };
-
+const insertObjectAtIndex=(index, object) => {
+  ConversationList.splice(index, 0, object);
+}
 const changeIndex = (val) => {
   chooseIndex.value = val;
   sessionItemList.value = sessionItemList.value.map((_, index) => index === val);
