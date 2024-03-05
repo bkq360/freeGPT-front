@@ -16,15 +16,12 @@ i{
     border-radius: 50%;
     border:1px  solid rgb(196, 193, 193,0.5) ;
     position:relative;
-    /* position:relative; */
-    /* top: 255px; */
     margin: auto 0;
     left: -24px;
-    width: 22px;
-    height:22px;
+    width: 24px;
+    height:21px;
     cursor: pointer;
     background-color:#FFF;
-    /* right:5px; */
     transform:translateX(50%) translateY(-50%) rotateY(180deg);
     /* z-index:1; */
     box-shadow: 0 2px 4px 0px rgba(0,0,0,.06);

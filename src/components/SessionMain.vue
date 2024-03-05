@@ -545,6 +545,7 @@ button,
   font-size: 100%;
 }
 
-svg {
+/* svg {
   display: block;
-}</style>
+} */
+</style>

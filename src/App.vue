@@ -55,7 +55,6 @@ const changeEditStatus = (bool) => {
 <template>
   <div class="main">
     <div class="contain">
-      <div class="main-content"></div>
       <div class="main-right" id="meun-right">
         <div class="item-header">
           <AddButton @add-session-item="addSessionItem" />
@@ -112,7 +111,7 @@ html {
 .item-bottom {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  position:absolute;
+  /* position:absolute; */
   bottom: 25px;
 }
 
@@ -161,7 +160,8 @@ html {
 
 .main-left {
   position:relative;
-  width: 86%;
+  width: 100%;
+  margin-left: -12px;
   /* display: grid; */
   /* grid-template-rows: 90% 10%; */
   height: calc(100vh - 30px);
