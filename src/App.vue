@@ -7,22 +7,23 @@ import UserInfo from "./components/UserInfo.vue";
 import SessionMain from "./components/SessionMain.vue";
 import SessionFooter from "./components/SessionFooter.vue";
 
-const isNoComponent = ref(true);
-const sessionItemList = ref([]);
-const chooseIndex = ref(0);
-const isEdit = ref(true);
-const ConversationList = reactive([])
+const isNoSessionTab = ref(true);                                                    //if no session tab
+const sessionItemList = ref([]);                                                     //a arr for session tab list
+const chooseIndex = ref(0);                                                          //Index of which session tab to choose
+const isEdit = ref(true);                                                            //Edit session tab status
+const ConversationList = ref([])                                                //data of session tab                                            
 provide("chooseIndex", chooseIndex);
 provide("isEdit", isEdit);
 provide("conversationList",ConversationList);
-const spandDiv = () => {
+const spandDiv = () => {                                                             //the left div spand function
   const element = document.getElementById("meun-right");
-  const expandButton = document.getElementsByClassName("expand")[0];
+  const  expandButton = document.getElementsByClassName("expand")[0];
   element.style.width = element.style.width === "0px" ? "14%" : "0px";
-  expandButton.style.transform = `translateX(50%) translateY(-50%)${element.style.width === "0px" ? "" : " rotateY(180deg)"}`;
+  expandButton.style.transform = `translateX(50%) translateY(-50%)`;
+  element.style.width === "0px" ? "" : " rotateY(180deg)";
 };
 
-const showScrollbar = () => {
+const showScrollbar = () => {                                                   
   document.getElementById("leftItemMain").style.overflow = "overlay";
 };
 
@@ -30,24 +31,24 @@ const hideScrollbar = () => {
   document.getElementById("leftItemMain").style.overflow = "hidden";
 };
 
-const addSessionItem = () => {
-  isNoComponent.value = false;
+const addSessionItem = () => {                                                      //Add session tab
+  isNoSessionTab.value = false;
   sessionItemList.value.unshift(false);
-  // ConversationList.value.unshift({"title":"","conversation":[]})
   insertObjectAtIndex(0,{"title":"","conversation":[]})
-  // console.log(ConversationList[0])
-  // console.log(ConversationList.value)
   changeIndex(0);
 };
-const insertObjectAtIndex=(index, object) => {
-  ConversationList.splice(index, 0, object);
+const insertObjectAtIndex=(index, object) => {                                      //insert a session tab data to conversationList
+  ConversationList.value.splice(index, 0, object);
+  // console.log(ConversationList.value)
 }
-const changeIndex = (val) => {
+
+const changeIndex = (val) => {                                                      //change session tab
   chooseIndex.value = val;
+  console.log(ConversationList.value)
   sessionItemList.value = sessionItemList.value.map((_, index) => index === val);
 };
 
-const changeEditStatus = (bool) => {
+const changeEditStatus = (bool) => {                                                //Edit session tab title
   isEdit.value = bool;
 };
 </script>
@@ -60,7 +61,7 @@ const changeEditStatus = (bool) => {
           <AddButton @add-session-item="addSessionItem" />
         </div>
         <div class="item-main" id="leftItemMain" @mouseenter="showScrollbar" @mouseleave="hideScrollbar">
-          <div class="default" v-if="isNoComponent">
+          <div class="default" v-if="isNoSessionTab">
             <div class="no-date-img">
               <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="mb-2 text-3xl iconify iconify--ri" width="40" height="40" viewBox="0 0 30 30"><path fill="currentColor" d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zM7.416 14H4v5h16v-5h-3.416a5.001 5.001 0 0 1-9.168 0M20 5H4v7h5a3 3 0 1 0 6 0h5z"></path></svg>
             </div>

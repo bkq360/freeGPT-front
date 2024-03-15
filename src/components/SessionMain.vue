@@ -1,5 +1,13 @@
 <script setup>
-
+import {inject} from "vue"
+const chooseIndex = inject(['chooseIndex'])
+// console.log(itemIndex)
+window.onload = function() {
+    var scrollableDiv = document.getElementsByClassName('main-layout')[0];
+    if (scrollableDiv) {
+      scrollableDiv.scrollTop = scrollableDiv.scrollHeight;  // 设置滚动条到底部
+    }
+};
 </script>
 <template>
   <div class="left-main">
@@ -482,7 +490,7 @@ p {
 }
 
 .left-main {
-  z-index: 2;
+  /* z-index: 2; */
   width: 100%;
   height: 100%;
   /* background-color: red; */
@@ -491,11 +499,12 @@ p {
 
 .main-layout {
   margin: auto;
-  height: calc(100% - 126px);
+  /* height: calc(100% - 126px); */
+  height: 100%;
   max-width: 1280px;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding: 16px;
-  overflow: hidden;
+  /* overflow: hidden; */
   /* background-color: blue; */
 }
 

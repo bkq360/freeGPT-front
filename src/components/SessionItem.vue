@@ -6,19 +6,19 @@ const text = ref("New Chat");
 const props = defineProps(['index'])
 const itemIndex = props.index
 
-console.log(isEdit.value)
+// console.log(isEdit.value)
 // const chooseIndex = props.chooseIndex
 const emit = defineEmits(['changeSessionItemIndex','changeEditStatus'])
 
 const changeSessions=(()=>{
     emit('changeSessionItemIndex',itemIndex)
     emit('changeEditStatus',false)
-    console.log(isEdit.value)
+    // console.log(isEdit.value)
 }) 
 function alertSessionText(){
     // isEdit.value = true;
     emit('changeEditStatus',true)
-    console.log(isEdit.value)
+    // console.log(isEdit.value)
 }
 function alertSessionSave(){
     emit('changeEditStatus',false)
